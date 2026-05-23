@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/dashboard-style.css">
+    <title>Place Order - Laundrify</title>
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="logo-text">LAUNDRIFY</div>
+        <div class="user-tag"><span>Staff Counter: <strong>Juan Dela Cruz</strong></span></div>
+    </header>
+    <div class="app-frame">
+        <aside class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="order.html" class="nav-link active">Place New Order</a>
+            <a href="queue.html" class="nav-link">Orders Queue</a>
+            <a href="customers.html" class="nav-link">Customer Database</a>
+            <a href="services.html" class="nav-link">Services Catalog</a>
+            <a href="payments.html" class="nav-link">Payments Ledger</a>
+
+            <div class="logout-anchor">
+        <a href="login.html" class="nav-link logout-btn">Log Out</a>
+    </div>
+        </aside>
+        <main class="workspace">
+             <div id="view-order" class="view-panel active-view">
+                <h1>Create New Transaction</h1>
+                <form class="transaction-grid" onsubmit="event.preventDefault();">
+                    <div>
+                        <div class="ui-card">
+                            <h3>[CUSTOMERS] Identity Mapping</h3>
+                            <div class="form-element">
+                                <label for="cust-field">Assign Customer Row Reference</label>
+                                <select id="cust-field">
+                                    <option value="1">CUST-001 | Maria Clara</option>
+                                    <option value="2">CUST-002 | Crisostomo Ibarra</option>
+                                </select>
+                                <button type="button" class="btn-ui btn-secondary">+ Quick Register Customer</button>
+                            </div>
+                        </div>
+
+                        <div class="ui-card">
+                            <h3>[SERVICES] Rate Calculation Card</h3>
+                            <div class="form-element">
+                                <label for="svc-field">Select Operational Service</label>
+                                <select id="svc-field">
+                                    <option value="50">Wash-Dry-Fold (₱50.00 / kg)</option>
+                                    <option value="120">Dry Cleaning (₱120.00 / pc)</option>
+                                    <option value="150">Comforter Treatment (₱150.00 / pc)</option>
+                                </select>
+                            </div>
+                            <div class="form-element">
+                                <label for="qty-field">Weight / Volume Input</label>
+                                <input type="number" id="qty-field" value="5.0" min="0.1" step="0.1">
+                            </div>
+                            <button type="button" class="btn-ui btn-primary">Insert into Order Details</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="ui-card">
+                            <h3>[ORDER_DETAILS] Structural Transaction Items</h3>
+                            <table class="basket-table">
+                                <thead>
+                                    <tr>
+                                        <th>Service Name</th>
+                                        <th>Weight/Qty</th>
+                                        <th>Current Rate</th>
+                                        <th>Subtotal</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Wash-Dry-Fold</td>
+                                        <td>5.0 kg</td>
+                                        <td>₱50.00</td>
+                                        <td><strong>₱250.00</strong></td>
+                                        <td><button type="button" class="btn-danger-text">&times;</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="checkout-footer">
+                                <div class="form-element inline-footer-field">
+                                    <label for="pay-field">Payment Method</label>
+                                    <select id="pay-field">
+                                        <option value="Cash">Cash Currency</option>
+                                        <option value="GCash">GCash Transfer</option>
+                                    </select>
+                                </div>
+                                <div class="grand-total-lbl">Total: ₱250.00</div>
+                                <button type="submit" class="btn-ui btn-success">FINALIZE ORDER</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            </main>
+    </div>
+</body>
+</html>

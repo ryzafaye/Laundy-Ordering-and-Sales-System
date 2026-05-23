@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/dashboard-style.css">
+    <title>Place Order - Laundrify</title>
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="logo-text">LAUNDRIFY</div>
+        <div class="user-tag"><span>Staff Counter: <strong>Juan Dela Cruz</strong></span></div>
+    </header>
+    <div class="app-frame">
+        <aside class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="order.html" class="nav-link">Place New Order</a>
+            <a href="queue.html" class="nav-link">Orders Queue</a>
+            <a href="customers.html" class="nav-link active">Customer Database</a>
+            <a href="services.html" class="nav-link">Services Catalog</a>
+            <a href="payments.html" class="nav-link">Payments Ledger</a>
+
+            <div class="logout-anchor">
+        <a href="login.html" class="nav-link logout-btn">Log Out</a>
+    </div>
+        </aside>
+        <main class="workspace">
+             <div id="view-customers" class="view-panel active-view">
+                <h1>[CUSTOMERS] System Ledger</h1>
+                <div class="ui-card">
+                    <table class="basket-table">
+                        <thead>
+                            <tr><th>CustomerID</th><th>First Name</th><th>Last Name</th><th>Contact Number</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Maria</td><td>Clara</td><td>09123456789</td></tr>
+                            <tr><td>2</td><td>Crisostomo</td><td>Ibarra</td><td>09876543210</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </main>
+    </div>
+</body>
+</html>

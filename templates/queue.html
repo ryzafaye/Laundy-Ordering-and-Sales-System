@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/dashboard-style.css">
+    <title>Place Order - Laundrify</title>
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="logo-text">LAUNDRIFY</div>
+        <div class="user-tag"><span>Staff Counter: <strong>Juan Dela Cruz</strong></span></div>
+    </header>
+    <div class="app-frame">
+        <aside class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="order.html" class="nav-link">Place New Order</a>
+            <a href="queue.html" class="nav-link active">Orders Queue</a>
+            <a href="customers.html" class="nav-link">Customer Database</a>
+            <a href="services.html" class="nav-link">Services Catalog</a>
+            <a href="payments.html" class="nav-link">Payments Ledger</a>
+
+            <div class="logout-anchor">
+        <a href="login.html" class="nav-link logout-btn">Log Out</a>
+    </div>
+        </aside>
+        <main class="workspace">
+              <div id="view-orders-list" class="view-panel active-view">
+                <h1>[ORDERS] Queue Status Tracker</h1>
+                <div class="ui-card">
+                    <table class="basket-table">
+                        <thead>
+                            <tr>
+                                <th>OrderID</th>
+                                <th>CustomerID</th>
+                                <th>OrderDate</th>
+                                <th>OrderStatus</th>
+                                <th>TotalAmount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ORD-1024</td><td>CUST-001</td><td>2026-05-23</td><td><span class="status-badge status-pending">Pending</span></td><td>₱250.00</td></tr>
+                            <tr><td>ORD-1023</td><td>CUST-002</td><td>2026-05-22</td><td><span class="status-badge status-claimed">Claimed</span></td><td>₱120.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </main>
+    </div>
+</body>
+</html>

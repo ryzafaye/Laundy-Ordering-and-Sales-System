@@ -1,0 +1,338 @@
+
+        /* ==========================================================================
+           LAUNDRIFY - EMBEDDED SYSTEM STYLESHEET
+           ========================================================================== */
+
+        :root {
+            --brand-primary: #ec4899; /* Vibrant Pink */
+            --brand-dark: #1e293b;    /* Deep Slate */
+            --brand-pink-dark: #be185d; /* Darker Pink for sidebar gradients */
+            --bg-light: #f1f5f9;      /* Light Gray Background */
+            --surface-white: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            
+            --success: #10b981;       /* Emerald Green */
+            --danger: #ef4444;        /* Red */
+            --warning: #f59e0b;       /* Amber */
+            --info: #3b82f6;          /* Blue */
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* --- NAVIGATION HEADER --- */
+        .top-navbar {
+            background: var(--surface-white);
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            letter-spacing: 1px;
+        }
+
+        .user-tag {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* --- CORE APPLICATION LAYOUT --- */
+        .app-frame {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+
+        /* REVISED: Pink Theme Sidebar Navigation */
+      .sidebar-nav {
+        width: 260px;
+        background: linear-gradient(180deg, var(--brand-primary), var(--brand-pink-dark));
+        color: #fce7f3;
+        padding: 20px 0;
+        position: relative;
+        z-index: 100; /* Force the sidebar to sit on top */
+        flex-shrink: 0; /* Ensures the sidebar doesn't get squashed */
+        display: flex;
+        flex-direction: column;
+        pointer-events: auto; /* Ensures mouse clicks/hovers pass through */
+    }
+    
+    .logout-anchor {
+    margin-top: auto; 
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 0;
+}
+
+    /* 3. Style the logout button */
+    .logout-btn {
+        color: #fce7f3;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background: rgba(220, 38, 38, 0.5); /* Red hover */
+        color: white;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 15px 25px;
+        color: #fce7f3;
+        text-decoration: none;
+        font-weight: 600;
+        border-left: 4px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    /* Ensure hover is NOT being blocked */
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        cursor: pointer;
+    }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.25); 
+            border-left-color: white;
+            color: white;
+        }
+
+        .nav-link.active:hover {
+        background: rgba(255, 255, 255, 0.4); /* Slightly lighter on hover */
+        color: white;
+        }
+
+        .workspace {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* --- MULTI-VIEW LAYOUTS --- */
+        .view-panel {
+            display: none;
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        .view-panel.active-view {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .view-panel h1 {
+            font-size: 1.6rem;
+            color: var(--brand-dark);
+            margin-bottom: 25px;
+        }
+
+        /* --- FEATURE LAYOUT GRIDS --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .transaction-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .feature-split-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 25px;
+        }
+
+        /* --- UI CARDS & METRICS --- */
+        .ui-card {
+            background: var(--surface-white);
+            border-radius: var(--radius);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+        }
+
+        .ui-card h3 {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .metric-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+        }
+
+        .metric-subtext {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Machine Progress Trackers */
+        .machine-status-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .machine-status-row:last-child { border-bottom: none; }
+
+        .progress-bar-container {
+            width: 100px;
+            background-color: #cbd5e1;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background-color: var(--brand-primary);
+            height: 100%;
+        }
+
+        /* --- FORM ELEMENT STYLING --- */
+        .form-element {
+            margin-bottom: 18px;
+        }
+
+        .form-element label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-element input[type="text"],
+        .form-element input[type="password"],
+        .form-element input[type="number"],
+        .form-element select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-element input:focus,
+        .form-element select:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+
+        /* --- BUTTON MATRICES --- */
+        .btn-ui {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-success { background-color: var(--success); color: white; }
+        .btn-success:hover { background-color: #059669; }
+
+        .btn-primary { background-color: var(--brand-primary); color: white; }
+        .btn-primary:hover { background-color: #db2777; }
+
+        .btn-secondary { background-color: var(--bg-light); color: var(--text-main); margin-top: 10px; }
+        .btn-secondary:hover { background-color: #e2e8f0; }
+
+        .btn-danger-text { background: none; border: none; color: var(--danger); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+
+        /* --- INTERACTIVE DATA TABLES --- */
+        .basket-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .basket-table th, .basket-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .basket-table th {
+            background-color: var(--bg-light);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- STATUS MONITOR BADGES --- */
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .status-pending { background: #fef3c7; color: #d97706; }
+        .status-processing { background: #e0f2fe; color: #0369a1; }
+        .status-completed { background: #d1fae5; color: #065f46; }
+        .status-claimed { background: #f1f5f9; color: #475569; }
+        .status-paid { background: #dcfce7; color: #15803d; }
+
+        /* --- SYSTEM TRANSACTION FOOTER --- */
+        .checkout-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px dashed #cbd5e1;
+        }
+
+        .inline-footer-field { margin-bottom: 0; min-width: 220px; }
+        .grand-total-lbl { font-size: 1.6rem; font-weight: bold; color: var(--brand-dark); }
+        .checkout-footer .btn-ui { width: auto; padding: 12px 45px; }
