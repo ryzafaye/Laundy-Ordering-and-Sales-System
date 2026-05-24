@@ -111,6 +111,21 @@
         transition: all 0.2s ease;
     }
 
+    .nav-icon {
+    width: 20px;       /* Set your preferred icon size */
+    height: 20px;      /* Keep it square */
+    margin-right: 12px;
+    vertical-align: middle; /* Aligns the icon with the text center */
+}
+
+    .nav-link img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
     /* Ensure hover is NOT being blocked */
     .nav-link:hover {
         background: rgba(255, 255, 255, 0.2);
@@ -322,6 +337,38 @@
         .status-completed { background: #d1fae5; color: #065f46; }
         .status-claimed { background: #f1f5f9; color: #475569; }
         .status-paid { background: #dcfce7; color: #15803d; }
+
+
+        .status-select {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            /* This makes the dropdown look like a clean label */
+            appearance: none;
+            text-align: center;
+
+        }
+
+        /* This allows your existing badge colors to work on the dropdown */
+        .status-select option[value="pending"]   { background: #fef3c7; color: #d97706; }
+        .status-select option[value="washing"]   { background: #e0f2fe; color: #0369a1; }
+        .status-select option[value="drying"]    { background: #fff7ed; color: #c2410c; }
+        .status-select option[value="ready"]     { background: #dcfce7; color: #15803d; }
+        .status-select option[value="claimed"]   { background: #f1f5f9; color: #475569; } 
+
+        /* New Payment statuses */
+        .status-select option[value="paid"]     { background: #dcfce7; color: #15803d; }
+        .status-select option[value="refunded"]   { background: #fee2e2; color: #991b1b; }
+
+        /* Dashboard */
+        .status-select option[value="processing"] { background: #e0f2fe; color: #0369a1; }
+        .status-select option[value="completed"]  { background: #dcfce7; color: #15803d; }
+
+
+
 
         /* --- SYSTEM TRANSACTION FOOTER --- */
         .checkout-footer {

@@ -12,36 +12,113 @@
     </header>
     <div class="app-frame">
         <aside class="sidebar-nav">
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="order.html" class="nav-link">Place New Order</a>
-            <a href="queue.html" class="nav-link active">Orders Queue</a>
-            <a href="customers.html" class="nav-link">Customer Database</a>
-            <a href="services.html" class="nav-link">Services Catalog</a>
-            <a href="payments.html" class="nav-link">Payments Ledger</a>
+            <a href="dashboard.html" class="nav-link active">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\dashboard.png" class="nav-icon">Shop Overview</a>
+            <a href="order.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\order.png" class="nav-icon">New Laundry Order</a>
+            <a href="queue.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\queue.png" class="nav-icon">Orders Queue</a>
+            <a href="customers.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\customer.png" class="nav-icon">Registered Customers</a>
+            <a href="services.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\services.png" class="nav-icon">Laundry Services</a>
+            <a href="payments.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\history.png" class="nav-icon">Transaction History</a>
 
             <div class="logout-anchor">
-        <a href="login.html" class="nav-link logout-btn">Log Out</a>
+        <a href="login.html" class="nav-link logout-btn">
+            <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\logout.png" class="nav-icon">Log Out</a>
     </div>
+    
         </aside>
         <main class="workspace">
               <div id="view-orders-list" class="view-panel active-view">
-                <h1>[ORDERS] Queue Status Tracker</h1>
+                <h1>Active Order Status Tracker</h1>
                 <div class="ui-card">
                     <table class="basket-table">
                         <thead>
                             <tr>
-                                <th>OrderID</th>
-                                <th>CustomerID</th>
-                                <th>OrderDate</th>
-                                <th>OrderStatus</th>
-                                <th>TotalAmount</th>
+                                <th>Order ID</th>
+                                <th>Customer ID</th>
+                                <th>Order Date</th>
+                                <th>Order Status</th>
+                                <th>Total Amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>ORD-1024</td><td>CUST-001</td><td>2026-05-23</td><td><span class="status-badge status-pending">Pending</span></td><td>₱250.00</td></tr>
-                            <tr><td>ORD-1023</td><td>CUST-002</td><td>2026-05-22</td><td><span class="status-badge status-claimed">Claimed</span></td><td>₱120.00</td></tr>
+                            <tr><td>ORD-1024</td>
+                            <td>CUST-001</td>
+                            <td>2026-05-23</td>
+                            <td>
+                                <select class="status-select">
+                                    <option value="pending">Pending</option>
+                                    <option value="washing">Washing</option>
+                                    <option value="drying">Drying</option>
+                                    <option value="ready">Ready</option>
+                                    <option value="claimed">Claimed</option>
+                                </select>
+                            </td>
+                            <td>₱250.00</td>
+                        </tr>
+
+                            <tr><td>ORD-1023</td>
+                            <td>CUST-002</td>
+                            <td>2026-05-22</td>
+                            <td>
+                                <select class="status-select">
+                                    <option value="pending">Pending</option>
+                                    <option value="washing">Washing</option>
+                                    <option value="drying">Drying</option>
+                                    <option value="ready">Ready</option>
+                                    <option value="claimed">Claimed</option>
+                                </select>
+                            </td>
+                            <td>₱120.00</td>
+                        </tr>
+
+   
                         </tbody>
                     </table>
+
+
+                    <script>
+                        document.querySelectorAll('.status-select').forEach(select => {
+                            // Set initial color based on initial selection
+                            updateColor(select);
+
+                            // Update when changed
+                            select.addEventListener('change', function() {
+                                updateColor(this);
+                            });
+                        });
+
+                        function updateColor(el) {
+                            const value = el.value;
+                            if (value === 'pending') { 
+                                el.style.backgroundColor = '#fef3c7'; 
+                                el.style.color = '#d97706'; 
+                            }
+                            else if (value === 'washing') { 
+                                el.style.backgroundColor = '#e0f2fe'; 
+                                el.style.color = '#0369a1'; 
+                            }
+                            else if (value === 'drying') { 
+                                el.style.backgroundColor = '#fff7ed'; 
+                                el.style.color = '#c2410c'; 
+                            }
+                            else if (value === 'ready') { 
+                                el.style.backgroundColor = '#dcfce7'; 
+                                el.style.color = '#15803d'; 
+                            }
+                            else if (value === 'claimed') { 
+                                el.style.backgroundColor = '#f1f5f9'; 
+                                el.style.color = '#475569'; 
+                            }
+                        }
+                    </script>
+
+
+
                 </div>
             </div>
             </main>

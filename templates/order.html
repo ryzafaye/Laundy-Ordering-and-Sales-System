@@ -12,38 +12,46 @@
     </header>
     <div class="app-frame">
         <aside class="sidebar-nav">
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="order.html" class="nav-link active">Place New Order</a>
-            <a href="queue.html" class="nav-link">Orders Queue</a>
-            <a href="customers.html" class="nav-link">Customer Database</a>
-            <a href="services.html" class="nav-link">Services Catalog</a>
-            <a href="payments.html" class="nav-link">Payments Ledger</a>
+            <a href="dashboard.html" class="nav-link active">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\dashboard.png" class="nav-icon">Shop Overview</a>
+            <a href="order.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\order.png" class="nav-icon">New Laundry Order</a>
+            <a href="queue.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\queue.png" class="nav-icon">Orders Queue</a>
+            <a href="customers.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\customer.png" class="nav-icon">Registered Customers</a>
+            <a href="services.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\services.png" class="nav-icon">Laundry Services</a>
+            <a href="payments.html" class="nav-link">
+                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\history.png" class="nav-icon">Transaction History</a>
 
             <div class="logout-anchor">
-        <a href="login.html" class="nav-link logout-btn">Log Out</a>
+        <a href="login.html" class="nav-link logout-btn">
+            <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\logout.png" class="nav-icon">Log Out</a>
     </div>
+    
         </aside>
         <main class="workspace">
              <div id="view-order" class="view-panel active-view">
-                <h1>Create New Transaction</h1>
+                <h1>Book New Laundry Service</h1>
                 <form class="transaction-grid" onsubmit="event.preventDefault();">
                     <div>
                         <div class="ui-card">
-                            <h3>[CUSTOMERS] Identity Mapping</h3>
+                            <h3>CUSTOMER DETAILS</h3>
                             <div class="form-element">
-                                <label for="cust-field">Assign Customer Row Reference</label>
+                                <label for="cust-field">Search Customer</label>
                                 <select id="cust-field">
                                     <option value="1">CUST-001 | Maria Clara</option>
                                     <option value="2">CUST-002 | Crisostomo Ibarra</option>
                                 </select>
-                                <button type="button" class="btn-ui btn-secondary">+ Quick Register Customer</button>
-                            </div>
+                            </div>    
+                            <button type="button" class="btn-ui btn-primary">+ Add New Customer</button>
                         </div>
 
                         <div class="ui-card">
-                            <h3>[SERVICES] Rate Calculation Card</h3>
+                            <h3>SERVICE SELECTION</h3>
                             <div class="form-element">
-                                <label for="svc-field">Select Operational Service</label>
+                                <label for="svc-field">Service Category</label>
                                 <select id="svc-field">
                                     <option value="50">Wash-Dry-Fold (₱50.00 / kg)</option>
                                     <option value="120">Dry Cleaning (₱120.00 / pc)</option>
@@ -51,16 +59,16 @@
                                 </select>
                             </div>
                             <div class="form-element">
-                                <label for="qty-field">Weight / Volume Input</label>
+                                <label for="qty-field">Weight (kg) / Quantity (pcs)</label>
                                 <input type="number" id="qty-field" value="5.0" min="0.1" step="0.1">
                             </div>
-                            <button type="button" class="btn-ui btn-primary">Insert into Order Details</button>
+                            <button type="button" class="btn-ui btn-primary">+ Add Laundry Order</button>
                         </div>
                     </div>
 
                     <div>
                         <div class="ui-card">
-                            <h3>[ORDER_DETAILS] Structural Transaction Items</h3>
+                            <h3>ORDER SUMMARY</h3>
                             <table class="basket-table">
                                 <thead>
                                     <tr>
