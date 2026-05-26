@@ -2,51 +2,227 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Services - Laundrify</title>
     <link rel="stylesheet" href="../static/dashboard-style.css">
-    <title>Place Order - Laundrify</title>
+    <link rel="stylesheet" href="../static/services.css">
 </head>
 <body>
     <header class="top-navbar">
-        <div class="logo-text">LAUNDRIFY</div>
-        <div class="user-tag"><span>Staff Counter: <strong>Juan Dela Cruz</strong></span></div>
+        <div class="brand-wrapper">
+            <img src="../images/laundrify_logo.png" alt="Logo" class="nav-logo-img">
+            <div class="logo-text">LAUNDRIFY</div>
+        </div>
+        <div class="date-display" id="liveDate">Loading date...</div>
     </header>
+    
     <div class="app-frame">
         <aside class="sidebar-nav">
-            <a href="dashboard.html" class="nav-link active">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\dashboard.png" class="nav-icon">Shop Overview</a>
+            <a href="dashboard.html" class="nav-link">
+                <img src="../images/dashboard.png" class="nav-icon" alt="">Dashboard</a>
             <a href="order.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\order.png" class="nav-icon">New Laundry Order</a>
+                <img src="../images/order.png" class="nav-icon" alt="">Create Order</a>
             <a href="queue.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\queue.png" class="nav-icon">Orders Queue</a>
+                <img src="../images/queue.png" class="nav-icon" alt="">Active Orders</a>
             <a href="customers.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\customer.png" class="nav-icon">Registered Customers</a>
-            <a href="services.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\services.png" class="nav-icon">Laundry Services</a>
+                <img src="../images/customer.png" class="nav-icon" alt="">Customers</a>
+            <a href="services.html" class="nav-link active">
+                <img src="../images/services.png" class="nav-icon" alt="">Services</a>
             <a href="payments.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\history.png" class="nav-icon">Transaction History</a>
+                <img src="../images/history.png" class="nav-icon" alt="">Transactions</a>
 
             <div class="logout-anchor">
-        <a href="login.html" class="nav-link logout-btn">
-            <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\logout.png" class="nav-icon">Log Out</a>
-    </div>
-    
-        </aside>
-        <main class="workspace">
-             <div id="view-services" class="view-panel active-view">
-                <h1>Laundry Service Price List</h1>
-                <div class="ui-card">
-                    <table class="basket-table">
-                        <thead>
-                            <tr><th>Service ID</th><th>Service Name</th><th>Base Rate</th><th>Unit Basis</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td>Wash-Dry-Fold</td><td>₱50.00</td><td>kg</td></tr>
-                            <tr><td>2</td><td>Dry Cleaning</td><td>₱120.00</td><td>pc</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <a href="login.html" class="nav-link logout-btn">
+                    <img src="../images/logout.png" class="nav-icon" alt="">Log Out</a>
             </div>
-            </main>
+        </aside>
+
+        <main class="workspace">
+            <div id="view-services" class="view-panel active-view">
+                
+                <div class="dashboard-header">
+                    <h1 style="margin: 0;">Laundry Service Price List</h1>
+                    <div class="dashboard-staff-info">
+                        <img src="../images/customer.png" alt="Staff Icon">
+                        <span>Staff Counter: <strong style="color: var(--brand-dark);">Juan Dela Cruz</strong></span>
+                    </div>
+                </div>
+                
+                <div class="service-table-card">
+                    <div class="table-header-row">
+                        <h3>Registered Services (Reference Only)</h3>
+                        <div class="search-box">
+                            <input type="text" id="searchService" class="form-control" placeholder="Search service name..." oninput="filterServices()">
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="basket-table" id="serviceTable">
+                            <thead>
+                                <tr>
+                                    <th>Service ID</th>
+                                    <th>Service Name</th>
+                                    <th>Description</th>
+                                    <th>Base Rate</th>
+                                    <th>Unit Basis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">BASIC LAUNDRY</strong></td></tr>
+                                <tr>
+                                    <td><strong>SVC-001</strong></td>
+                                    <td>Wash Only</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Clothes are washed using a washing machine only.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱50.00</td>
+                                    <td>kg</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-002</strong></td>
+                                    <td>Dry Only</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Clean clothes are dried using a dryer only.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱50.00</td>
+                                    <td>kg</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-003</strong></td>
+                                    <td>Wash-Dry-Fold (WDF)</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Includes washing, drying, and folding of clothes.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱90.00</td>
+                                    <td>kg</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-004</strong></td>
+                                    <td>Full-Service Laundry</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Complete laundry handling including sorting, washing, drying, and folding.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱120.00</td>
+                                    <td>kg</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-005</strong></td>
+                                    <td>Fold Only</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Clean clothes are neatly folded only.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱20.00</td>
+                                    <td>kg</td>
+                                </tr>
+
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">DELICATES & PRESSING</strong></td></tr>
+                                <tr>
+                                    <td><strong>SVC-006</strong></td>
+                                    <td>Ironing / Pressing</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Clothes are ironed to remove wrinkles and improve appearance.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱30.00</td>
+                                    <td>pc</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-007</strong></td>
+                                    <td>Delicates Laundry</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Gentle cleaning for sensitive fabrics like silk and lace.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱150.00</td>
+                                    <td>kg</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-008</strong></td>
+                                    <td>Dry Cleaning (Suit/Gown)</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Chemical cleaning for delicate or formal clothing.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱300.00</td>
+                                    <td>pc</td>
+                                </tr>
+
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">LINENS & BULKY ITEMS</strong></td></tr>
+                                <tr>
+                                    <td><strong>SVC-009</strong></td>
+                                    <td>Linen & Bedsheet Laundry</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Washing service for linens, pillowcases, and bedsheets.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱150.00</td>
+                                    <td>kg</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-010</strong></td>
+                                    <td>Comforter / Blanket</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Special cleaning for thick blankets and comforters.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱250.00</td>
+                                    <td>pc</td>
+                                </tr>
+
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">SPECIALTY CLEANING</strong></td></tr>
+                                <tr>
+                                    <td><strong>SVC-011</strong></td>
+                                    <td>Shoe Cleaning (Pair)</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Cleaning service for sneakers and shoes. (1 pc = 1 pair)</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱350.00</td>
+                                    <td>pc</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-012</strong></td>
+                                    <td>Bag Cleaning</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Cleaning and maintenance for bags and backpacks.</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱500.00</td>
+                                    <td>pc</td>
+                                </tr>
+
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">ADD-ONS & FEES</strong></td></tr>
+                                <tr>
+                                    <td><strong>SVC-013</strong></td>
+                                    <td>Rush Service Fee</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Faster processing for same-day needs. (1 pc = 1 Rush Add-on)</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱80.00</td>
+                                    <td>pc</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-014</strong></td>
+                                    <td>Stain Removal</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Special treatment for difficult stains. (1 pc = 1 Clothing item)</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱60.00</td>
+                                    <td>pc</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-015</strong></td>
+                                    <td>Fabric Conditioner Add-on</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Adds premium fragrance to clothes. (1 pc = 1 Load/Batch)</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱25.00</td>
+                                    <td>pc</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SVC-016</strong></td>
+                                    <td>Pickup & Delivery Fee</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Delivery to customer's location. (1 pc = 1 Delivery Transaction)</td>
+                                    <td style="font-weight: bold; color: #15803d;">₱60.00</td>
+                                    <td>pc</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>
+
+    <script>
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('liveDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+        function filterServices() {
+            const query = document.getElementById('searchService').value.toLowerCase();
+            const rows = document.querySelectorAll('#serviceTable tbody tr');
+
+            rows.forEach(row => {
+                if (row.querySelector('td[colspan="5"]')) {
+                    if (query.length > 0) {
+                        row.style.display = 'none';
+                    } else {
+                        row.style.display = '';
+                    }
+                    return; 
+                }
+
+                const rowText = row.textContent.toLowerCase();
+                if (rowText.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

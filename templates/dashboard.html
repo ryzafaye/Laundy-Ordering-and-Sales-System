@@ -3,69 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/dashboard-style.css">
-    <title>Place Order - Laundrify</title>
+    <title>Dashboard-Laundrify</title>
 </head>
 <body>
     <header class="top-navbar">
-        <div class="logo-text">LAUNDRIFY</div>
-        <div class="user-tag"><span>Staff Counter: <strong>Juan Dela Cruz</strong></span></div>
+        <div class="brand-wrapper">
+            <img src="../images/laundrify_logo.png" alt="Logo" class="nav-logo-img">
+            <div class="logo-text">LAUNDRIFY</div>
+        </div>
+        <div class="date-display" id="liveDate">Loading date...</div>
     </header>
+    
     <div class="app-frame">
         <aside class="sidebar-nav">
             <a href="dashboard.html" class="nav-link active">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\dashboard.png" class="nav-icon">Shop Overview</a>
+                <img src="../images/dashboard.png" class="nav-icon" alt="">Dashboard</a>
             <a href="order.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\order.png" class="nav-icon">New Laundry Order</a>
+                <img src="../images/order.png" class="nav-icon" alt="">Create Order</a>
             <a href="queue.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\queue.png" class="nav-icon">Orders Queue</a>
+                <img src="../images/queue.png" class="nav-icon" alt="">Active Orders</a>
             <a href="customers.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\customer.png" class="nav-icon">Registered Customers</a>
+                <img src="../images/customer.png" class="nav-icon" alt="">Customers</a>
             <a href="services.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\services.png" class="nav-icon">Laundry Services</a>
+                <img src="../images/services.png" class="nav-icon" alt="">Services</a>
             <a href="payments.html" class="nav-link">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\history.png" class="nav-icon">Transaction History</a>
+                <img src="../images/history.png" class="nav-icon" alt="">Transactions</a>
 
             <div class="logout-anchor">
-        <a href="login.html" class="nav-link logout-btn">
-            <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\logout.png" class="nav-icon">Log Out</a>
-    </div>
+                <a href="login.html" class="nav-link logout-btn">
+                    <img src="../images/logout.png" class="nav-icon" alt="">Log Out</a>
+            </div>
         </aside>
+
         <main class="workspace">
             <div id="view-dashboard" class="view-panel active-view">
-                <h1>System Dashboard Overview</h1>
+                
+                <div class="dashboard-header">
+                    <h1>System Dashboard Overview</h1>
+                    <div class="dashboard-staff-info">
+                        <span>Staff Counter: <strong style="color: var(--brand-dark);">Arabella Andal</strong></span>
+                    </div>
+                </div>
                 
                 <div class="dashboard-grid">
                     <div class="ui-card" style="border-top: 4px solid var(--brand-primary);">
-                        <h3>Today's Earnings</h3>
+                        <h3>Today's Sales</h3>
                         <p class="metric-display">₱14,250.00</p>
                         <p class="metric-subtext" style="color: var(--success);">↑ 12% vs yesterday</p>
                     </div>
                     <div class="ui-card" style="border-top: 4px solid var(--warning);">
-                        <h3>Active Counter Queue</h3>
+                        <h3>Washing</h3>
                         <p class="metric-display">12 Orders</p>
-                        <p class="metric-subtext">Pending laundry dropoffs</p>
+                        <p class="metric-subtext">Currently in progress</p>
                     </div>
                     <div class="ui-card" style="border-top: 4px solid var(--info);">
-                        <h3>Ready for Pickup</h3>
+                        <h3>Pickup</h3>
                         <p class="metric-display">8 Batches</p>
-                        <p class="metric-subtext">Waiting for customer claim</p>
+                        <p class="metric-subtext">Ready for claiming</p>
                     </div>
+                    
+                    <div class="ui-card" style="border-top: 4px solid var(--delivery);">
+                        <h3>Delivery</h3>
+                        <p class="metric-display">5 Orders</p>
+                        <p class="metric-subtext">Scheduled drop-offs today</p>
+                    </div>
+
                     <div class="ui-card" style="border-top: 4px solid var(--success);">
-                        <h3>Daily Goal Progress</h3>
-                        <p class="metric-display">78%</p>
-                        <p class="metric-subtext">Target: 50 Total orders</p>
+                        <h3>Completed</h3>
+                        <p class="metric-display">42 Orders</p>
+                        <p class="metric-subtext">Fully paid & released</p>
                     </div>
                 </div>
 
                 <div class="feature-split-grid">
+                    
                     <div class="ui-card">
-                        <h3>Real-Time Fulfillment Status</h3>
-                        <table class="basket-table" style="margin-top: 10px;">
+                        <h3>Real-Time Monitoring Status</h3>
+                        
+                        <div class="search-container" style="margin-top: 15px;">
+                            <input type="text" class="search-input" placeholder="Search orders...">
+                            <select class="filter-select">
+                                <option value="all">Filter By: All</option>
+                                <option value="order_id">Order ID</option>
+                                <option value="customer">Customer</option>
+                            </select>
+                            <button class="btn-ui btn-primary" style="width: auto; padding: 8px 16px; margin: 0;">Search</button>
+                        </div>
+
+                        <table class="basket-table">
                             <thead>
                                 <tr>
                                     <th>Order ID</th>
                                     <th>Customer</th>
-                                    <th>Service Applied</th>
+                                    <th>Service</th>
+                                    <th>Amount</th>
+                                    <th>Payment</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -73,36 +105,30 @@
                                 <tr>
                                     <td>ORD-1025</td>
                                     <td>Maria Clara</td>
-                                    <td>Wash-Dry-Fold (5kg)</td>
+                                    <td>Wash-Dry-Fold</td>
+                                    <td>₱175.00</td>
+                                    <td><span class="status-badge status-unpaid">Unpaid</span></td>
                                     <td>
-                                        <select class="status-select">
+                                        <select class="status-select status-processing">
                                             <option value="pending">Pending</option>
-                                            <option value="processing">Processing</option>
-                                            <option value="completed">Completed</option>
+                                            <option value="processing" selected>Processing</option>
+                                            <option value="ready">Ready</option>
+                                            <option value="claimed">Claimed</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>ORD-1026</td>
                                     <td>Crisostomo Ibarra</td>
-                                    <td>Dry Cleaning (2pcs)</td>
+                                    <td>Dry Cleaning</td>
+                                    <td>₱300.00</td>
+                                    <td><span class="status-badge status-paid">Paid</span></td>
                                     <td>
-                                        <select class="status-select">
+                                        <select class="status-select status-ready">
                                             <option value="pending">Pending</option>
                                             <option value="processing">Processing</option>
-                                            <option value="completed">Completed</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>ORD-1022</td>
-                                    <td>Elias Sisa</td>
-                                    <td>Comforter Treatment</td>
-                                    <td>
-                                        <select class="status-select">
-                                            <option value="pending">Pending</option>
-                                            <option value="processing">Processing</option>
-                                            <option value="completed">Completed</option>
+                                            <option value="ready" selected>Ready</option>
+                                            <option value="claimed">Claimed</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -110,60 +136,70 @@
                         </table>
                     </div>
 
-                    <div class="ui-card">
-                        <h3>Machine Station Monitoring Load</h3>
-                        <div style="margin-top: 10px;">
-                            <div class="machine-status-row">
-                                <div><strong>Washer Station #1</strong><br><small style="color: var(--text-muted);">Cycle: Heavy Wash</small></div>
-                                <div class="progress-bar-container"><div class="progress-fill" style="width: 75%;"></div></div>
-                            </div>
-                            <div class="machine-status-row">
-                                <div><strong>Washer Station #2</strong><br><small style="color: var(--success);">Available</small></div>
-                                <div class="progress-bar-container"><div class="progress-fill" style="width: 0%;"></div></div>
-                            </div>
-                            <div class="machine-status-row">
-                                <div><strong>Dryer Station #1</strong><br><small style="color: var(--text-muted);">Cycle: High Heat Eco</small></div>
-                                <div class="progress-bar-container"><div class="progress-fill" style="width: 40%;"></div></div>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <div class="ui-card" style="margin-bottom: 0;">
+                            <h3>Quick Actions</h3>
+                            <div class="modern-quick-actions-container">
+                                <button class="quick-action-tile" onclick="window.location.href='order.html'">
+                                    <img src="../images/order.png" alt="Order">
+                                    New Order
+                                </button>
+                                <button class="quick-action-tile" onclick="window.location.href='payments.html'">
+                                    <img src="../images/history.png" alt="Payment">
+                                    Transactions
+                                </button>
+                                <button class="quick-action-tile" onclick="window.location.href='customers.html'">
+                                    <img src="../images/customer.png" alt="Client">
+                                    Add Customer
+                                </button>
                             </div>
                         </div>
+
+                        <div class="ui-card" style="margin-bottom: 0;">
+                            <h3>My Shift Breakdown</h3>
+                            <div style="margin-top: 15px;">
+                                <div class="machine-status-row">
+                                    <div>
+                                        <strong>Cash in Drawer</strong><br>
+                                        <small style="color: var(--text-muted);">Physical payments</small>
+                                    </div>
+                                    <div style="font-size: 1.1rem; font-weight: bold; color: var(--success);">₱2,150.00</div>
+                                </div>
+                                <div class="machine-status-row">
+                                    <div>
+                                        <strong>Card / Online Payment</strong><br>
+                                        <small style="color: var(--text-muted);">Digital transfers</small>
+                                    </div>
+                                    <div style="font-size: 1.1rem; font-weight: bold; color: var(--info);">₱1,100.00</div>
+                                </div>
+                                <div class="machine-status-row" style="border: none; padding-bottom: 0;">
+                                    <div>
+                                        <strong>Collectibles</strong><br>
+                                        <small style="color: var(--text-muted);">Unpaid order</small>
+                                    </div>
+                                    <div style="font-size: 1.1rem; font-weight: bold; color: var(--warning);">₱450.00</div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
-            </main>
+        </main>
     </div>
 
-            <script>
-                        document.querySelectorAll('.status-select').forEach(select => {
-                            // Set initial color based on initial selection
-                            updateColor(select);
+    <script>
+        document.querySelectorAll('.status-select').forEach(select => {
+            select.addEventListener('change', function() {
+                this.classList.remove('status-pending', 'status-processing', 'status-ready', 'status-claimed');
+                this.classList.add('status-' + this.value);
+            });
+        });
 
-                            // Update when changed
-                            select.addEventListener('change', function() {
-                                updateColor(this);
-                            });
-                        });
-
-                        function updateColor(el) {
-                            const value = el.value;
-
-                            if (value === 'pending') { 
-                                el.style.backgroundColor = '#fef3c7'; // Light Yellow
-                                el.style.color = '#d97706';           // Dark Yellow/Orange
-                            }
-                            else if (value === 'processing') { 
-                                el.style.backgroundColor = '#e0f2fe'; // Light Blue
-                                el.style.color = '#0369a1';           // Dark Blue
-                            }
-                            else if (value === 'completed') { 
-                                el.style.backgroundColor = '#dcfce7'; // Light Green
-                                el.style.color = '#15803d';           // Dark Green
-                            }
-                        }
-                        
-                    </script>
-
-
-
+        // JS para sa Live Date
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('liveDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+    </script>
 </body>
 </html>
