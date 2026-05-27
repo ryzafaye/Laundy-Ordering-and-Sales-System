@@ -22,10 +22,10 @@
             <h1>Welcome to Laundrify</h1>
             <p class="form-subtitle">Ready for today's orders? Sign in below.</p>
 
-            <form action="dashboard.html" method="GET">
+            <form id="loginForm">
                 <div class="form-element">
                     <label for="empid">Employee ID</label>
-                    <input type="text" id="empid" name="empid" placeholder="e.g., EMP-001" required>
+                    <input type="text" id="empid" name="empid" placeholder="e.g., EMP-001 or ADM-001" required>
                 </div>
 
                 <div class="form-element">
@@ -33,7 +33,7 @@
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn-ui btn-success" style="margin-top: 15px;">
+                <button type="submit" class="btn-ui btn-success" style="margin-top: 15px; width: 100%;">
                     SIGN IN
                 </button>
             </form>
@@ -50,6 +50,31 @@
         </main>
 
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const empId = document.getElementById('empid').value.trim().toUpperCase();
+            const password = document.getElementById('password').value;
+
+            if (empId.startsWith('ADM')) {
+                localStorage.setItem('userRole', 'admin');
+                localStorage.setItem('userId', empId);
+                
+                window.location.href = "admin-dashboard.html"; 
+
+            } else if (empId.startsWith('EMP')) {
+                localStorage.setItem('userRole', 'staff');
+                localStorage.setItem('userId', empId);
+                
+                window.location.href = "dashboard.html";
+
+            } else {
+                alert("Invalid Employee ID format. Please use 'ADM-' for Admin accounts or 'EMP-' for standard Staff accounts.");
+            }
+        });
+    </script>
 
 </body>
 </html>
