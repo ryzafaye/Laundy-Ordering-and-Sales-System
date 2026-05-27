@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Reports - Laundrify</title>
+    <link rel="stylesheet" href="../static/dashboard-style.css">
+    <link rel="stylesheet" href="../static/services.css">
+    <link rel="stylesheet" href="../static/admin-reports.css">
+
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="brand-wrapper">
+            <img src="../static/images/laundrify_logo.png" alt="Logo" class="nav-logo-img">
+            <div class="logo-text">LAUNDRIFY | ADMIN</div>
+        </div>
+        <div class="date-display" id="liveDate">Loading date...</div>
+    </header>
+    
+    <div class="app-frame">
+        <aside class="sidebar-nav">
+            <a href="admin-dashboard.html" class="nav-link">
+                <img src="../static/images/dashboard-admin.png" class="nav-icon" alt="">Dashboard</a>
+            <a href="admin-staff.html" class="nav-link">
+                <img src="../static/images/employee.png" class="nav-icon" alt="">Manage Staff</a>
+            <a href="admin-order.html" class="nav-link">
+                <img src="../static/images/booking.png" class="nav-icon" alt="">All Orders</a>
+            <a href="admin-reports.html" class="nav-link active">
+                <img src="../static/images/reports.png" class="nav-icon" alt="">Financial Reports</a>
+            <a href="admin-settings.html" class="nav-link">
+                <img src="../static/images/settings.png" class="nav-icon" alt="">Settings</a>
+
+            <div class="logout-anchor">
+                <a href="login.html" class="nav-link logout-btn">
+                    <img src="../static/images/logout-admin.png" class="nav-icon" alt="">Log Out</a>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <div id="view-transactions" class="view-panel active-view">
+                
+                <div class="dashboard-header">
+                    <h1 style="margin: 0;">Financial Reports & Transactions</h1>
+                    <div class="dashboard-staff-info">
+                        <img src="../static/images/user.png" alt="Staff Icon">
+                        <span>Administrator: <strong style="color: var(--brand-dark);">Ryza Faye</strong></span>
+                    </div>
+                </div>
+
+                
+                <div class="dashboard-grid staff-grid-layout">
+                    <div class="ui-card card-accent-brand card-no-margin">
+                        <h3>Total Revenue</h3>
+                        <p class="metric-display" id="metric-revenue">₱45,200.00</p>
+                        <p class="metric-subtext">Current Month</p>
+                    </div>
+                    <div class="ui-card card-accent-success card-no-margin">
+                        <h3>Net Profit</h3>
+                        <p class="metric-display" id="metric-profit">₱32,100.00</p>
+                        <p class="metric-subtext text-color-success">After all expenses</p>
+                    </div>
+                    <div class="ui-card card-accent-warning card-no-margin">
+                        <h3>Pending Receivables</h3>
+                        <p class="metric-display" id="metric-pending">₱3,500.00</p>
+                        <p class="metric-subtext">Unpaid customer orders</p>
+                    </div>
+                    <div class="ui-card card-accent-info card-no-margin">
+                        <h3>Total Expenses</h3>
+                        <p class="metric-display" id="metric-expenses">₱13,100.00</p>
+                        <p class="metric-subtext">Supplies & Utilities</p>
+                    </div>
+                </div>
+
+                <div class="service-table-card">
+                    <div class="table-header-row">
+                        <h3>Transaction Ledger</h3>
+                        <div class="search-box">
+                            <input type="text" id="searchFinance" class="form-control" placeholder="Search transactions..." oninput="filterFinance()">
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="basket-table" id="financeTable">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">INCOME / REVENUE</strong></td></tr>
+                                <tr>
+                                    <td><strong>TXN-1001</strong></td>
+                                    <td>May 27, 2026</td>
+                                    <td>Order #8492 - Wash-Dry-Fold (5kg)</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Basic Laundry</td>
+                                    <td style="font-weight: bold; color: #15803d;">+ ₱450.00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TXN-1002</strong></td>
+                                    <td>May 27, 2026</td>
+                                    <td>Order #8493 - Dry Cleaning (Suit)</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Delicates</td>
+                                    <td style="font-weight: bold; color: #15803d;">+ ₱300.00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TXN-1003</strong></td>
+                                    <td>May 26, 2026</td>
+                                    <td>Order #8488 - Comforter x2</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Linens</td>
+                                    <td style="font-weight: bold; color: #15803d;">+ ₱500.00</td>
+                                </tr>
+
+                                <tr style="background-color: #f8fafc;"><td colspan="5"><strong style="color: #64748b; font-size: 0.8rem;">EXPENSES / PAYABLES</strong></td></tr>
+                                <tr>
+                                    <td><strong>EXP-2001</strong></td>
+                                    <td>May 26, 2026</td>
+                                    <td>Supplier Restock - Liquid Detergent (20L)</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Supplies</td>
+                                    <td style="font-weight: bold; color: #ef4444;">- ₱1,200.00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EXP-2002</strong></td>
+                                    <td>May 25, 2026</td>
+                                    <td>Meralco Monthly Electricity Bill</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Utilities</td>
+                                    <td style="font-weight: bold; color: #ef4444;">- ₱8,500.00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EXP-2003</strong></td>
+                                    <td>May 25, 2026</td>
+                                    <td>Maynilad Monthly Water Bill</td>
+                                    <td style="color: #64748b; font-size: 0.85rem;">Utilities</td>
+                                    <td style="font-weight: bold; color: #ef4444;">- ₱3,400.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Set the live date
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('liveDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+        // Filter function adapted for the financial table
+        function filterFinance() {
+            const query = document.getElementById('searchFinance').value.toLowerCase();
+            const rows = document.querySelectorAll('#financeTable tbody tr');
+
+            rows.forEach(row => {
+                // Ignore the category header rows during search hiding
+                if (row.querySelector('td[colspan="5"]')) {
+                    if (query.length > 0) {
+                        row.style.display = 'none'; // Hide category headers when actively searching
+                    } else {
+                        row.style.display = '';     // Show them when search is cleared
+                    }
+                    return; 
+                }
+
+                // Check actual transaction rows
+                const rowText = row.textContent.toLowerCase();
+                if (rowText.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

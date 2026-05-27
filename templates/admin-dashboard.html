@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/dashboard-style.css">
+    <link rel="stylesheet" href="../static/admin-dashboard.css">
+    <title>Admin Dashboard - Laundrify</title>
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="brand-wrapper">
+            <img src="../static/images/laundrify_logo.png" alt="Logo" class="nav-logo-img">
+            <div class="logo-text">LAUNDRIFY | ADMIN</div>
+        </div>
+        <div class="date-display" id="liveDate">Loading date...</div>
+    </header>
+    
+    <div class="app-frame">
+        <aside class="sidebar-nav">
+            <a href="admin-dashboard.html" class="nav-link active">
+                <img src="../static/images/dashboard-admin.png" class="nav-icon" alt="">Dashboard</a>
+            <a href="admin-staff.html" class="nav-link">
+                <img src="../static/images/employee.png" class="nav-icon" alt="">Manage Staff</a>
+            <a href="admin-order.html" class="nav-link">
+                <img src="../static/images/booking.png" class="nav-icon" alt="">All Orders</a>
+            <a href="admin-reports.html" class="nav-link">
+                <img src="../static/images/reports.png" class="nav-icon" alt="">Financial Reports</a>
+            <a href="admin-settings.html" class="nav-link">
+                <img src="../static/images/settings.png" class="nav-icon" alt="">Settings</a>
+
+            <div class="logout-anchor">
+                <a href="login.html" class="nav-link logout-btn">
+                    <img src="../static/images/logout-admin.png" class="nav-icon" alt="">Log Out
+                </a>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <div id="view-order" class="view-panel active-view">
+                
+                <div class="dashboard-header">
+                    <h1>Admin System Overview</h1>
+                    <div class="dashboard-staff-info">
+                        <img src="../static/images/user.png" alt="Administrator Icon">
+                        <span>Administrator: <strong class="text-brand-dark">Ryza Faye</strong></span>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="ui-card card-brand">
+                        <h3>Monthly Revenue</h3>
+                        <p class="metric-display">₱342,500.00</p>
+                        <p class="metric-subtext text-success">↑ 8% vs last month</p>
+                    </div>
+                    <div class="ui-card card-info">
+                        <h3>Active Staff</h3>
+                        <p class="metric-display">4 on Duty</p>
+                        <p class="metric-subtext">Out of 12 total employees</p>
+                    </div>
+                    <div class="ui-card card-success">
+                        <h3>Total Orders Today</h3>
+                        <p class="metric-display">68 Orders</p>
+                        <p class="metric-subtext">Across all branches/shifts</p>
+                    </div>
+                    <div class="ui-card card-danger">
+                        <h3>Machine Status</h3>
+                        <p class="metric-display">2 Offline</p>
+                        <p class="metric-subtext text-danger">Requires maintenance check</p>
+                    </div>
+                </div>
+
+                <div class="feature-split-grid">
+                    
+                    <div class="ui-card">
+                        <h3>System-Wide Activity</h3>
+                        
+                        <div class="search-container">
+                            <input type="text" class="search-input input-flexible" placeholder="Search any order, staff, or customer...">
+                            <select class="filter-select">
+                                <option value="all">Filter By: All</option>
+                                <option value="staff">Staff Member</option>
+                                <option value="status">Order Status</option>
+                            </select>
+                            <button class="btn-ui btn-primary btn-search-fixed">Search</button>
+                        </div>
+
+                        <table class="basket-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-id">Order ID</th>
+                                    <th class="col-customer">Customer</th>
+                                    <th class="col-handler">Handled By</th>
+                                    <th class="col-amount">Amount</th>
+                                    <th class="col-payment">Payment</th>
+                                    <th class="col-status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ORD-1025</strong></td>
+                                    <td>Maria Clara</td>
+                                    <td>Ryza Reyes</td>
+                                    <td>₱175.00</td>
+                                    <td class="cell-center">
+                                        <span class="status-badge status-unpaid cell-badge-width">Unpaid</span>
+                                    </td>
+                                    <td class="cell-center">
+                                        <select class="status-select status-processing table-select-element">
+                                            <option value="pending">Pending</option>
+                                            <option value="processing" selected>Processing</option>
+                                            <option value="ready">Ready</option>
+                                            <option value="claimed">Claimed</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD-1026</strong></td>
+                                    <td>Crisostomo Ibarra</td>
+                                    <td>Jazmine Tuazon</td>
+                                    <td>₱300.00</td>
+                                    <td class="cell-center">
+                                        <span class="status-badge status-paid cell-badge-width">Paid</span>
+                                    </td>
+                                    <td class="cell-center">
+                                        <select class="status-select status-ready table-select-element">
+                                            <option value="pending">Pending</option>
+                                            <option value="processing">Processing</option>
+                                            <option value="ready" selected>Ready</option>
+                                            <option value="claimed">Claimed</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD-1027</strong></td>
+                                    <td>Leonor Rivera</td>
+                                    <td>Arabella Andal</td>
+                                    <td>₱450.00</td>
+                                    <td class="cell-center">
+                                        <span class="status-badge status-paid cell-badge-width">Paid</span>
+                                    </td>
+                                    <td class="cell-center">
+                                        <select class="status-select status-claimed table-select-element">
+                                            <option value="pending">Pending</option>
+                                            <option value="processing">Processing</option>
+                                            <option value="ready">Ready</option>
+                                            <option value="claimed" selected>Claimed</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="right-content-column">
+                        
+                        <div class="ui-card">
+                            <h3>Admin Quick Actions</h3>
+                            <div class="modern-quick-actions-container">
+                                <button class="quick-action-tile" onclick="window.location.href='admin-staff.html'">
+                                    <img src="../static/images/employee.png" alt="Staff">
+                                    Add Employee
+                                </button>
+                                <button class="quick-action-tile" onclick="window.location.href='admin-reports.html'">
+                                    <img src="../static/images/reports.png" alt="Report">
+                                    Generate Report
+                                </button>
+                                <button class="quick-action-tile" onclick="window.location.href='admin-settings.html'">
+                                    <img src="../static/images/settings.png" alt="Settings">
+                                    System Settings
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="ui-card">
+                            <h3>Business Overview (Today)</h3>
+                            <div class="machine-status-list">
+                                <div class="machine-status-row">
+                                    <div>
+                                        <strong>Gross Income</strong><br>
+                                        <small class="text-muted">Total payments received</small>
+                                    </div>
+                                    <div class="metric-value-value text-success">₱14,250.00</div>
+                                </div>
+                                <div class="machine-status-row">
+                                    <div>
+                                        <strong>Pending Collectibles</strong><br>
+                                        <small class="text-muted">Unpaid processed orders</small>
+                                    </div>
+                                    <div class="metric-value-value text-warning">₱2,100.00</div>
+                                </div>
+                                <div class="machine-status-row last-row">
+                                    <div>
+                                        <strong>System Alerts</strong><br>
+                                        <small class="text-muted">Low supplies / Maintenance</small>
+                                    </div>
+                                    <div class="metric-value-value text-danger">3 Alerts</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.status-select').forEach(select => {
+            select.addEventListener('change', function() {
+                this.classList.remove('status-pending', 'status-processing', 'status-ready', 'status-claimed');
+                this.classList.add('status-' + this.value);
+            });
+        });
+
+        // Live Date JS
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('liveDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+    </script>
+</body>
+</html>
