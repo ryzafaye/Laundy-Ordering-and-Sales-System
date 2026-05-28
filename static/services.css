@@ -1,0 +1,45 @@
+.service-table-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    height: calc(100vh - 160px); 
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.table-header-row h3 {
+    font-size: 1.1rem;
+    color: #334155;
+    margin: 0;
+}
+
+.search-box {
+    width: 300px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    color: #334155;
+}
+
+.form-control:focus {
+    border-color: #df1e6a;
+}
+
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+}

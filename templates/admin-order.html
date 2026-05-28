@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Active Orders - Laundrify</title>
+    <title>All Orders Master Log - Laundrify Admin</title>
     <link rel="stylesheet" href="../static/dashboard-style.css">
     <link rel="stylesheet" href="../static/queue.css">
 </head>
@@ -10,7 +10,7 @@
     <header class="top-navbar">
         <div class="brand-wrapper">
             <img src="../static/images/laundrify_logo.png" alt="Logo" class="nav-logo-img">
-            <div class="logo-text">LAUNDRIFY</div>
+            <div class="logo-text">LAUNDRIFY | ADMIN</div>
         </div>
         
         <div class="date-display" id="liveDate">Loading date...</div>
@@ -18,22 +18,20 @@
     
     <div class="app-frame">
         <aside class="sidebar-nav">
-            <a href="dashboard.html" class="nav-link">
-                <img src="../static/images/dashboard.png" class="nav-icon" alt="">Dashboard</a>
-            <a href="order.html" class="nav-link">
-                <img src="../static/images/order.png" class="nav-icon" alt="">Create Order</a>
-            <a href="queue.html" class="nav-link active">
-                <img src="../static/images/queue.png" class="nav-icon" alt="">Active Orders</a>
-            <a href="customers.html" class="nav-link">
-                <img src="../static/images/customer.png" class="nav-icon" alt="">Customers</a>
-            <a href="services.html" class="nav-link">
-                <img src="../static/images/services.png" class="nav-icon" alt="">Services</a>
-            <a href="payments.html" class="nav-link">
-                <img src="../static/images/history.png" class="nav-icon" alt="">Transactions</a>
+            <a href="admin-dashboard.html" class="nav-link">
+                <img src="../static/images/dashboard-admin.png" class="nav-icon" alt="">Dashboard</a>
+            <a href="admin-staff.html" class="nav-link">
+                <img src="../static/images/employee.png" class="nav-icon" alt="">Manage Staff</a>
+            <a href="admin-order.html" class="nav-link active">
+                <img src="../static/images/booking.png" class="nav-icon" alt="">All Orders</a>
+            <a href="admin-reports.html" class="nav-link">
+                <img src="../static/images/reports.png" class="nav-icon" alt="">Financial Reports</a>
+            <a href="admin-settings.html" class="nav-link">
+                <img src="../static/images/settings.png" class="nav-icon" alt="">Settings</a>
 
             <div class="logout-anchor">
                 <a href="login.html" class="nav-link logout-btn">
-                    <img src="../static/images/logout.png" class="nav-icon" alt="">Log Out</a>
+                    <img src="../static/images/logout-admin.png" class="nav-icon" alt="">Log Out</a>
             </div>
         </aside>
 
@@ -41,20 +39,20 @@
             <div id="view-orders-list" class="view-panel active-view">
                 
                 <div class="dashboard-header">
-                    <h1 style="margin: 0;">Active Order Status Tracker</h1>
+                    <h1 style="margin: 0;">All Orders Administrative Master Log</h1>
                     <div class="dashboard-staff-info">
-                        <img src="../static/images/user.png" alt="Staff Icon">
-                        <span>Staff Counter: <strong style="color: var(--brand-dark);">Juan Dela Cruz</strong></span>
+                        <img src="../static/images/user.png" alt="Administrator Icon">
+                        <span>Administrator: <strong style="color: var(--brand-dark);">Ryza Faye</strong></span>
                     </div>
                 </div>
                 
                 <div class="ui-card">
                     <div class="queue-controls">
                         <div class="search-container">
-                            <input type="text" id="searchInput" class="search-input" placeholder="Search by Order ID or Customer Name..." oninput="filterOrders()">
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search by Order ID, Customer, or Staff..." oninput="filterOrders()">
                             
                             <select id="statusFilter" class="filter-select" onchange="filterOrders()">
-                                <option value="all">Status: All Active</option>
+                                <option value="all">Status: All Records</option>
                                 <option value="pending">Pending</option>
                                 <option value="processing">Processing</option>
                                 <option value="ready">Ready for Pickup</option>
@@ -63,7 +61,7 @@
                         </div>
                         
                         <div id="activeCount" style="font-size: 0.9rem; color: #64748b;">
-                            Showing <strong>2</strong> active orders
+                            Showing <strong>4</strong> system rows
                         </div>
                     </div>
 
@@ -72,9 +70,10 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Customer</th>
-                                <th>Date Received</th>
+                                <th>Timeline Dates</th>
                                 <th>Total Amount</th>
-                                <th>Payment</th>
+                                <th>Payment Details</th>
+                                <th>Handled By</th>
                                 <th>Order Status</th>
                                 <th style="text-align: center;">Action</th>
                             </tr>
@@ -86,9 +85,19 @@
                                     Maria Clara<br>
                                     <span style="font-size: 0.75rem; color: #94a3b8;">CUST-001</span>
                                 </td>
-                                <td>May 23, 2026<br><span style="font-size: 0.75rem; color: #94a3b8;">10:30 AM</span></td>
+                                <td>
+                                    <span style="font-size: 0.8rem; color: #334155;">In: May 23, 10:30 AM</span><br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">Out: --</span>
+                                </td>
                                 <td>₱250.00</td>
-                                <td><span class="status-badge status-unpaid">Unpaid</span></td>
+                                <td>
+                                    <span class="status-badge status-unpaid">Unpaid</span><br>
+                                    <span style="font-size: 0.75rem; color: #64748b;">Pay on Pickup</span>
+                                </td>
+                                <td>
+                                    <span style="font-weight: 500;">Staff Jaja</span><br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">Counter 1</span>
+                                </td>
                                 <td>
                                     <select class="status-select status-processing" onchange="updateRowColor(this); filterOrders();">
                                         <option value="pending">Pending</option>
@@ -100,7 +109,7 @@
                                 <td>
                                     <div class="action-btn-group">
                                         <button class="btn-action-sm" onclick="openDetailsModal('ORD-1024', 'Maria Clara', 'Wash-Dry-Fold', '5.0 kg', '₱250.00')">View Details</button>
-                                        <button class="btn-action-sm btn-print" onclick="openReceiptModal('ORD-1024', 'Maria Clara', 'Wash-Dry-Fold', '250.00')">Print Receipt</button>
+                                        <button class="btn-action-sm btn-print" onclick="openReceiptModal('ORD-1024', 'Maria Clara', 'Wash-Dry-Fold', '250.00')">Print</button>
                                     </div>
                                 </td>
                             </tr>
@@ -111,9 +120,19 @@
                                     Jazmine Rei Tuazon<br>
                                     <span style="font-size: 0.75rem; color: #94a3b8;">CUST-002</span>
                                 </td>
-                                <td>May 22, 2026<br><span style="font-size: 0.75rem; color: #94a3b8;">02:15 PM</span></td>
+                                <td>
+                                    <span style="font-size: 0.8rem; color: #334155;">In: May 22, 02:15 PM</span><br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">Out: --</span>
+                                </td>
                                 <td>₱120.00</td>
-                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td>
+                                    <span class="status-badge status-paid">Paid</span><br>
+                                    <span style="font-size: 0.75rem; color: #64748b;">GCash (Ref: #8821)</span>
+                                </td>
+                                <td>
+                                    <span style="font-weight: 500;">Staff Ryza</span><br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">Counter 1</span>
+                                </td>
                                 <td>
                                     <select class="status-select status-ready" onchange="updateRowColor(this); filterOrders();">
                                         <option value="pending">Pending</option>
@@ -125,7 +144,77 @@
                                 <td>
                                     <div class="action-btn-group">
                                         <button class="btn-action-sm" onclick="openDetailsModal('ORD-1023', 'Jazmine Rei Tuazon', 'Dry Cleaning', '1.0 pc', '₱120.00')">View Details</button>
-                                        <button class="btn-action-sm btn-print" onclick="openReceiptModal('ORD-1023', 'Jazmine Rei Tuazon', 'Dry Cleaning', '120.00')">Print Receipt</button>
+                                        <button class="btn-action-sm btn-print" onclick="openReceiptModal('ORD-1023', 'Jazmine Rei Tuazon', 'Dry Cleaning', '120.00')">Print</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>ORD-1015</strong></td>
+                                <td>
+                                    Crisostomo Ibarra<br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">CUST-008</span>
+                                </td>
+                                <td>
+                                    <span style="font-size: 0.8rem; color: #334155;">In: May 18, 09:00 AM</span><br>
+                                    <span style="font-size: 0.75rem; color: #10b981; font-weight: 500;">Claimed: May 20, 04:30 PM</span>
+                                </td>
+                                <td>₱380.00</td>
+                                <td>
+                                    <span class="status-badge status-paid">Paid</span><br>
+                                    <span style="font-size: 0.75rem; color: #64748b;">Cash Trx</span>
+                                </td>
+                                <td>
+                                    <span style="font-weight: 500;">Staff Ara</span><br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">Counter 2</span>
+                                </td>
+                                <td>
+                                    <select class="status-select status-claimed" onchange="updateRowColor(this); filterOrders();">
+                                        <option value="pending">Pending</option>
+                                        <option value="processing">Processing</option>
+                                        <option value="ready">Ready</option>
+                                        <option value="claimed" selected>Claimed</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="action-btn-group">
+                                        <button class="btn-action-sm" onclick="openDetailsModal('ORD-1015', 'Crisostomo Ibarra', 'Blankets & Comforters', '8.0 kg', '₱380.00')">View Details</button>
+                                        <button class="btn-action-sm btn-print" onclick="openReceiptModal('ORD-1015', 'Crisostomo Ibarra', 'Blankets & Comforters', '380.00')">Print</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>ORD-1002</strong></td>
+                                <td>
+                                    Elias Piloto<br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">CUST-012</span>
+                                </td>
+                                <td>
+                                    <span style="font-size: 0.8rem; color: #334155;">In: May 10, 04:10 PM</span><br>
+                                    <span style="font-size: 0.75rem; color: #10b981; font-weight: 500;">Claimed: May 12, 11:15 AM</span>
+                                </td>
+                                <td>₱150.00</td>
+                                <td>
+                                    <span class="status-badge status-paid">Paid</span><br>
+                                    <span style="font-size: 0.75rem; color: #64748b;">Maya (Ref: #9012)</span>
+                                </td>
+                                <td>
+                                    <span style="font-weight: 500;">Staff Kosa</span><br>
+                                    <span style="font-size: 0.75rem; color: #94a3b8;">Counter 2</span>
+                                </td>
+                                <td>
+                                    <select class="status-select status-claimed" onchange="updateRowColor(this); filterOrders();">
+                                        <option value="pending">Pending</option>
+                                        <option value="processing">Processing</option>
+                                        <option value="ready">Ready</option>
+                                        <option value="claimed" selected>Claimed</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="action-btn-group">
+                                        <button class="btn-action-sm" onclick="openDetailsModal('ORD-1002', 'Elias Piloto', 'Wash-Dry-Fold', '3.0 kg', '₱150.00')">View Details</button>
+                                        <button class="btn-action-sm btn-print" onclick="openReceiptModal('ORD-1002', 'Elias Piloto', 'Wash-Dry-Fold', '150.00')">Print</button>
                                     </div>
                                 </td>
                             </tr>
@@ -176,44 +265,20 @@
                 <button class="close-btn" onclick="closeReceiptModal()">&times;</button>
             </div>
             <div class="receipt-wrapper">
-                
                 <div class="thermal-paper" id="printable-area">
                     <h2>LAUNDRIFY</h2>
                     <p>Brgy. San Antonio, Biñan<br>Tel: 0912-345-6789</p>
-                    
                     <div class="receipt-divider"></div>
-                    
-                    <div class="receipt-row">
-                        <span>Order ID:</span>
-                        <span id="rec-id">---</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span>Customer:</span>
-                        <span id="rec-name">---</span>
-                    </div>
-                    
+                    <div class="receipt-row"><span>Order ID:</span><span id="rec-id">---</span></div>
+                    <div class="receipt-row"><span>Customer:</span><span id="rec-name">---</span></div>
                     <div class="receipt-divider"></div>
-                    
-                    <div class="receipt-row" style="font-weight: bold;">
-                        <span>Item</span>
-                        <span>Amount</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span id="rec-service">---</span>
-                        <span id="rec-price">---</span>
-                    </div>
-                    
+                    <div class="receipt-row" style="font-weight: bold;"><span>Item</span><span>Amount</span></div>
+                    <div class="receipt-row"><span id="rec-service">---</span><span id="rec-price">---</span></div>
                     <div class="receipt-divider"></div>
-                    
-                    <div class="receipt-row" style="font-size: 1rem; font-weight: bold;">
-                        <span>TOTAL:</span>
-                        <span>₱<span id="rec-total">0.00</span></span>
-                    </div>
-                    
+                    <div class="receipt-row" style="font-size: 1rem; font-weight: bold;"><span>TOTAL:</span><span>₱<span id="rec-total">0.00</span></span></div>
                     <div class="receipt-divider"></div>
                     <p style="margin-top: 15px;">Thank you for trusting Laundrify!<br>Please present this receipt upon claiming.</p>
                 </div>
-
             </div>
             <div class="modal-footer" style="display: flex; justify-content: space-between;">
                 <button class="btn-close-solid" onclick="closeReceiptModal()">Cancel</button>
@@ -232,6 +297,7 @@
         }
 
         document.querySelectorAll('.status-select').forEach(select => {
+            updateRowColor(select);
             select.addEventListener('change', function() {
                 updateRowColor(this);
             });
@@ -258,7 +324,7 @@
                 }
             });
 
-            document.getElementById('activeCount').innerHTML = `Showing <strong>${visibleCount}</strong> active orders`;
+            document.getElementById('activeCount').innerHTML = `Showing <strong>${visibleCount}</strong> total orders`;
         }
 
         function openDetailsModal(id, name, service, qty, price) {
@@ -267,7 +333,6 @@
             document.getElementById('det-service').textContent = service;
             document.getElementById('det-qty').textContent = qty;
             document.getElementById('det-price').textContent = price;
-            
             document.getElementById('detailsModal').style.display = 'flex';
         }
 
@@ -281,7 +346,6 @@
             document.getElementById('rec-service').textContent = service;
             document.getElementById('rec-price').textContent = price;
             document.getElementById('rec-total').textContent = price;
-            
             document.getElementById('receiptModal').style.display = 'flex';
         }
 
@@ -292,10 +356,8 @@
         function triggerPrint() {
             const printContent = document.getElementById('printable-area').innerHTML;
             const originalContent = document.body.innerHTML;
-
             document.body.innerHTML = `<div style="display:flex; justify-content:center; margin-top:50px;">${printContent}</div>`;
             window.print();
-
             document.body.innerHTML = originalContent;
             window.location.reload(); 
         }

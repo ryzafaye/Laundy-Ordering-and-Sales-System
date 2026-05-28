@@ -12,7 +12,7 @@
         
         <div class="brand-panel">
             <div class="logo-wrapper">
-                <img src="C:\Users\Arabella\GitHub\Laundy-Ordering-and-Sales-System\images\laundrify_logo.png" alt="Laundrify Logo" class="logo-img">
+                <img src="../static/images/laundrify_logo.png" alt="Laundrify Logo" class="logo-img">
             </div>
             <h2>LAUNDRIFY</h2>
             <p>Smart Laundry Management System</p>
@@ -22,30 +22,59 @@
             <h1>Welcome to Laundrify</h1>
             <p class="form-subtitle">Ready for today's orders? Sign in below.</p>
 
-            <div class="form-element">
-                <label for="username">Employee ID / Email</label>
-                <input type="text" id="username" placeholder="e.g., staff-001" required>
-            </div>
+            <form id="loginForm">
+                <div class="form-element">
+                    <label for="empid">Employee ID</label>
+                    <input type="text" id="empid" name="empid" placeholder="e.g., EMP-001 or ADM-001" required>
+                </div>
 
-            <div class="form-element">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-            </div>
+                <div class="form-element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
 
-            <div class="form-options">
-                <label class="remember-me">
-                    <input type="checkbox"> Remember Me
-                </label>
-                <a href="#" class="forgot-pass">Forgot Password?</a>
-            </div>
+                <button type="submit" class="btn-ui btn-success" style="margin-top: 15px; width: 100%;">
+                    SIGN IN
+                </button>
+            </form>
 
-            <a href="dashboard.html" style="text-decoration: none; display: block; width: 100%;">
-                <button type="button" class="btn-ui btn-success">SIGN IN</button>
-            </a>
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: 0.9em; color: #7f8c8d;">
+                    New staff? 
+                    <a href="register.html" style="color: #df1e6a; text-decoration: none; font-weight: bold;">
+                        Create an account
+                    </a>
+                </p>
+            </div>
             
         </main>
 
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const empId = document.getElementById('empid').value.trim().toUpperCase();
+            const password = document.getElementById('password').value;
+
+            if (empId.startsWith('ADM')) {
+                localStorage.setItem('userRole', 'admin');
+                localStorage.setItem('userId', empId);
+                
+                window.location.href = "admin-dashboard.html"; 
+
+            } else if (empId.startsWith('EMP')) {
+                localStorage.setItem('userRole', 'staff');
+                localStorage.setItem('userId', empId);
+                
+                window.location.href = "dashboard.html";
+
+            } else {
+                alert("Invalid Employee ID format. Please use 'ADM-' for Admin accounts or 'EMP-' for standard Staff accounts.");
+            }
+        });
+    </script>
 
 </body>
 </html>
